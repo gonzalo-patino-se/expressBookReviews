@@ -8,7 +8,7 @@ let users = [];
 const isValid = (username)=>{ //returns boolean
     // Filter users array for any user with the same username
     let userswithsamename == users.filter((user)=>{ 
-        return user.username ==username;
+        return user.username === username;
     });
     // Return ture if any user with the same username is found
     if (userswithsamename.length > 0){
@@ -19,8 +19,16 @@ const isValid = (username)=>{ //returns boolean
 }
 
 const authenticatedUser = (username,password)=>{ //returns boolean
-// Fiulter the users array for any user with the same username and password
-    let validusers = users.filter((user)=>{ return (user.username === username && user.password ==password);})
+// Filter the users array for any user with the same username and password
+    let validusers = users.filter((user)=>{ 
+        return (user.username === username && user.password ==password);
+    });
+    //Return true if any valid user is found, otherwise false
+    if (validusers.length >0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 //only registered users can login
