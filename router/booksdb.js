@@ -24,13 +24,24 @@ let books = {
       "author": "Hans Christian Andersen",
       "title": "Fairy tales",
       "isbn": "9782345678901",
-      "reviews": {}
+      "reviews": {
+            
+        user2: "Highly recommended for everyone.",
+        user5: "A masterpiece of literature."
+
+
+      }
     },
     3: {
       "author": "Dante Alighieri",
       "title": "The Divine Comedy",
       "isbn": "9783456789012",
-      "reviews": {}
+      "reviews": {
+        
+        user3: "Thought-provoking and emotional.",
+        user6: "Highly recommended for everyone."
+
+      }
     },
     4: {
       "author": "Unknown",
