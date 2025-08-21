@@ -4,6 +4,9 @@ let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
 
+//For async operations
+const axios = require('axios');
+
 
 public_users.post("/register", (req,res) => {
   const username = req.body.username;
@@ -31,12 +34,24 @@ public_users.post("/register", (req,res) => {
   }
 });
 
-// Get the book list available in the shop
-public_users.get('/',function (req, res) {
-  //Write your code here
-  res.send(JSON.stringify(books, null, 4));
 
+// POST route to get the list of books using async-await with Axios
+public_users.get('/', async function (req, res) {
+  try {
+    // Simulate async fetch using Axios (replace with real API if needed)
+
+
+    // Simulate async behavior with local data
+    const response = await new Promise((resolve) => {
+      setTimeout(() => resolve({ data: books }), 100); // Simulated delay
+    });
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch books", error: error.message });
+  }
 });
+
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
