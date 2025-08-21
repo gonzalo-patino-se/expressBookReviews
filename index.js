@@ -14,18 +14,17 @@ app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUni
 app.use("/customer/auth/*", function auth(req,res,next){
 //Middleware to authenticate users using JWT
 if (req.session.authorization) { //Get the authorization object stored in the session
-    token = req.session.authorization['accessToken'] //Retrieve the token from authorization object
-    jwt.verify(token, "access", (err, user)=>{ // Use JWT to verify token
+    let token = req.session.authorization['accessToken'] //Retrieve the token from authorization object
+    
+    jwt.verify(token, "access", (err, user) =>{ // Use JWT to verify token
         if (!err){
             req.user = user;
-            next();
+            next(); //Proceed to the next middleware
         }
         else{
             return res.status(403).json({ message: "User not authenticated"})
         }
-
     })
-
 
 }
 });

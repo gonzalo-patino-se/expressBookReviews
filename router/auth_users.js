@@ -7,7 +7,7 @@ let users = [];
 
 const isValid = (username)=>{ //returns boolean
     // Filter users array for any user with the same username
-    let userswithsamename == users.filter((user)=>{ 
+    let userswithsamename = users.filter((user)=>{ 
         return user.username === username;
     });
     // Return ture if any user with the same username is found
