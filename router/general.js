@@ -32,7 +32,7 @@ public_users.get('/isbn/:isbn',function (req, res) {
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   const authorName = req.params.author;
-  const book = Object.values(books).find(b => b.author === author); // Retrieve book object associated with author
+  const book = Object.values(books).find(b => b.author === authorName); // Retrieve book object associated with author
 
   if (book){
     res.status(200).json(book);
