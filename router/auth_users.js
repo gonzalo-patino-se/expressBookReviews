@@ -61,9 +61,28 @@ regd_users.post("/login", (req,res) => {
 
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
-  //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
-});
+    let retrieved_user = req.session.authorization?.username; //Retrieve the username from the session (assumes user is logged in)
+    let ISBN = req.params.isbn; // Extract the ISBN from the URL parameter
+    let details = req.query.review; // Extract the review text from the query string
+    let bookEntry = Object.values(books).find(book => book.isbn === ISBN);
+
+    //Check if the book with the given ISBN exists in the book object
+    if (!bookEntry) { // A book object doesn't exists for a given ISBN key => if it is true
+        //If not found, return a 404 error response
+        return res.status(404).json({ message: "Book not found"});
+    }
+    //Initialize the reviews object if it doesn't exist
+    if (!bookEntry.reviews){
+        bookEntry.reviews = {};
+    }
+    //Add or update the review for the current user
+    // This ensures each user can only have one review per book
+    bookEntry.reviews[retrieved_user] = details;
+
+    // Return a success response with status code 201 (created)
+    return res.status(201).json({ message: "Review added succesfully"});
+    
+  });
 
 module.exports.authenticated = regd_users;
 module.exports.isValid = isValid;
