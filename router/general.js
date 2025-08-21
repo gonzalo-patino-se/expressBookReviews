@@ -79,28 +79,55 @@ public_users.get('/isbn/:isbn', async function (req, res) {
   
 
 // Get book details based on author
-public_users.get('/author/:author',function (req, res) {
-  const authorName = req.params.author;
-  const book = Object.values(books).find(b => b.author === authorName); // Retrieve book object associated with author
 
-  if (book){
-    res.status(200).json(book);
-  }else{
-    res.status(404).json({ message : "Book not found with Author: " + authorName});
-  }
-});
-
-// Get all books based on title
-public_users.get('/title/:title',function (req, res) {
-    const titleName = req.params.title;
-    const book = Object.values(books).find(b => b.title === titleName); // Retrieve book object associated with author
+// Get book details based on author using async-await with Axios
+public_users.get('/author/:author', async function (req, res) {
+    const authorName = req.params.author;
   
-    if (book){
-      res.status(200).json(book);
-    }else{
-      res.status(404).json({ message : "Book not found with title: " + titleName});
+    try {
+      // Simulate async fetch using a Promise (replace with real Axios call if needed)
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          const book = Object.values(books).find(b => b.author === authorName);
+          resolve({ data: book });
+        }, 100); // Simulated delay
+      });
+  
+      if (response.data) {
+        res.status(200).json(response.data);
+      } else {
+        res.status(404).json({ message: "Book not found with Author: " + authorName });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Error retrieving book", error: error.message });
     }
-});
+  });
+  
+
+
+// Get book details based on title using async-await with Axios
+public_users.get('/title/:title', async function (req, res) {
+    const titleName = req.params.title;
+  
+    try {
+      // Simulate async fetch using a Promise (replace with real Axios call if needed)
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          const book = Object.values(books).find(b => b.title === titleName);
+          resolve({ data: book });
+        }, 100); // Simulated delay
+      });
+  
+      if (response.data) {
+        res.status(200).json(response.data);
+      } else {
+        res.status(404).json({ message: "Book not found with title: " + titleName });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Error retrieving book", error: error.message });
+    }
+  });
+  
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {

@@ -21,7 +21,7 @@ let books = {
     },
     3: {
       "author": "Dante Alighieri",
-      "title": "The Divine Comedy",
+      "title": "Apocalypsis",
       "isbn": "9783456789012",
       "reviews": {
         
@@ -31,25 +31,25 @@ let books = {
       }
     },
     4: {
-      "author": "Unknown",
+      "author": "Unknown1",
       "title": "The Epic Of Gilgamesh",
       "isbn": "9784567890123",
       "reviews": {}
     },
     5: {
-      "author": "Unknown",
+      "author": "Unknown2",
       "title": "The Book Of Job",
       "isbn": "9785678901234",
       "reviews": {}
     },
     6: {
-      "author": "Unknown",
+      "author": "Unknown3",
       "title": "One Thousand and One Nights",
       "isbn": "9786789012345",
       "reviews": {}
     },
     7: {
-      "author": "Unknown",
+      "author": "Unknown4",
       "title": "Njál's Saga",
       "isbn": "9787890123456",
       "reviews": {}
@@ -67,7 +67,7 @@ let books = {
       "reviews": {}
     },
     10: {
-      "author": "Samuel Beckett",
+      "author": "Samuel",
       "title": "Molloy, Malone Dies, The Unnamable, the trilogy",
       "isbn": "9780123456789",
       "reviews": {}
